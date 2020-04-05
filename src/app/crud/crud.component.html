@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row"> 
+        <div class="col-md-7 offset-md-3">  
+<h5>Http Methods | Get | Post | Put | Delete</h5>
+<form [formGroup]="form" class="form-group" (ngSubmit)="onSubmit()">
+   <div class="form-group">
+    <label><b>Firstname:</b></label>
+    <input type="text" formControlName="fname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fname.errors }">
+    <div *ngIf="submitted && f.fname.errors" class="invalid-feedback">
+        <div *ngIf="f.fname.errors.required">First Name is required</div>
+    </div>
+    </div>
+    <div class="form-group">
+    <label><b>Lastname:</b></label>
+    <input type="text" formControlName="lname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lname.errors }">
+    <div *ngIf="submitted && f.lname.errors" class="invalid-feedback">
+        <div *ngIf="f.lname.errors.required">Last Name is required</div>
+    </div>
+    </div>
+    <button class="btn btn-primary">Submit</button>&nbsp;
+    <button type="submit" (click)="update()" class="btn btn-primary">Update</button>
+</form><br>
+<br>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Actions</th>
+    </tr>
+    <tr *ngFor="let d of fdata ">
+        <td>{{d.id}}</td>
+        <td>{{d.fname}}</td>
+        <td>{{d.lname}}</td>
+        <td>
+                <button type="submit" (click)="edit(d)" class="btn btn-primary">Edit</button>&nbsp;
+                <button type="submit" (click)="delete(d)" class="btn btn-danger">Delete</button>&nbsp;
+                
+        </td>
+    </tr>
+</table>
+</div>
+  </div>
+  
+</div>
